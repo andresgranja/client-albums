@@ -1,0 +1,22 @@
+<h1>{{titulo}}</h1>
+
+<form #FormAlbum="ngForm" (ngSubmit)="onSubmit()">
+    <label>Nombre:</label>
+    <p>
+        <input type="text" #title="ngModel" name="title" [(ngModel)]="album.title" required>
+        <span *ngIf="!title.valid && title.touched">
+            el nombre es obligatorio
+        </span>
+    </p>
+
+    <label>Descripción:</label>
+    <p>
+        <textarea #description="ngModel" name="description" [(ngModel)]="album.description" required>
+        </textarea>
+        <span *ngIf="!description.valid && description.touched">
+                la descripción es obligatorio
+        </span>
+    </p>
+
+    <input type="submit" value="Editar Album" [disabled]="!FormAlbum.form.valid">
+</form>
